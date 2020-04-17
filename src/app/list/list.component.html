@@ -1,4 +1,26 @@
 <div class="list-container">
   <h2>Providers</h2>
+  <ul class="unselected">
+    <h3>Unselected</h3>
+    <li *ngFor="let p of providerService.getUnselectedProviders()">
+      <provider-card
+        [provider]="p"
+        (click)="providerService.selectProvider(p)"
+      ></provider-card>
+    </li>
+  </ul>
 
+  <ul class="selected">
+    <h3>Selected</h3>
+    <li *ngFor="let p of providerService.getSelectedProviders()">
+      <provider-card [provider]="p"></provider-card>
+      <button
+        class="delete"
+        title="Unselect Provider"
+        (click)="providerService.unselectProvider(p)"
+      >
+        x
+      </button>
+    </li>
+  </ul>
 </div>
