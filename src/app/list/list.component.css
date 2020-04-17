@@ -8,3 +8,13 @@
 h2 {
   border-bottom: 1px solid lightgray;
 }
+
+ul {
+  list-style-type: none;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+

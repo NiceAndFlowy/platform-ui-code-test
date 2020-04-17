@@ -2,16 +2,19 @@
   <h2>Providers</h2>
   <ul class="selected">
     <h3>Selected Providers</h3>
-    <li *ngFor="let p of providerService.getSelectedProviders()">
-      <provider-card [provider]="p" [isSelected]="true" (toggled)="onToggled($event)"></provider-card>
-    </li>
+    <div class="flex-container">
+      <li *ngFor="let p of providerService.getSelectedProviders()">
+        <provider-card [provider]="p" [isSelected]="true" (toggled)="onToggled($event)"></provider-card>
+      </li>
+    </div>
   </ul>
   <ul class="unselected">
     <h3>Unselected Providers</h3>
-    <li *ngFor="let p of providerService.getUnselectedProviders()">
-      <provider-card [provider]="p" [isSelected]="false" (toggled)="onToggled($event)">
-      </provider-card>
-    </li>
+    <div class="flex-container">
+      <li *ngFor="let p of providerService.getUnselectedProviders()">
+        <provider-card [provider]="p" [isSelected]="false" (toggled)="onToggled($event)">
+        </provider-card>
+      </li>
+    </div>
   </ul>
-
 </div>

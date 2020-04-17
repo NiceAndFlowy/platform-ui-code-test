@@ -9,7 +9,6 @@ import { ProvidersService } from "../services/providers.service";
 })
 export class ListComponent implements OnInit {
   onToggled(provider) {
-    console.log(provider);
     if (provider.isSelected) {
       this.providerService.unselectProvider(provider.provider);
     } else {
