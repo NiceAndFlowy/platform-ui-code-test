@@ -68,6 +68,7 @@ export class ProvidersService {
     this.unselectedProviders.push(provider);
     this.saveProvidersToLocalStorage();
   }
+
   private saveProvidersToLocalStorage(): void {
     localStorage.setItem(
       this.STORAGE_SELECTED,
