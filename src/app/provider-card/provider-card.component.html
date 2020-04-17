@@ -1,5 +1,8 @@
-<div *ngIf="provider">
-  <span>{{provider.name}}</span>
-  <span>{{provider.address}}</span>
-  <span>{{provider.phone}}</span>
+<div *ngIf="provider" (click)="!isSelected && toggleSelection()">
+  <button *ngIf="isSelected" class="delete" title="Unselect Provider" (click)="toggleSelection()">
+    x
+  </button>
+  <div>{{provider.name}}</div>
+  <div>{{provider.address}}</div>
+  <div>{{provider.phone}}</div>
 </div>

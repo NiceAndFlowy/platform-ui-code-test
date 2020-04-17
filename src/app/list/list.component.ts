@@ -8,6 +8,14 @@ import { ProvidersService } from "../services/providers.service";
   styleUrls: ["./list.component.css"],
 })
 export class ListComponent implements OnInit {
+  onToggled(provider) {
+    console.log(provider);
+    if (provider.isSelected) {
+      this.providerService.unselectProvider(provider.provider);
+    } else {
+      this.providerService.selectProvider(provider.provider);
+    }
+  }
   constructor(private providerService: ProvidersService) {}
   ngOnInit() {}
 }
