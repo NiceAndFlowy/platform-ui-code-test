@@ -1,41 +1,60 @@
-import { ListComponent } from './list.component';
+import { ProvidersService } from "./../services/providers.service";
+import { TestBed } from "@angular/core/testing";
+import { ListComponent } from "./list.component";
 
-describe('ListComponent', () => {
+describe("ListComponent", () => {
   let component: ListComponent;
-
+  let service: ProvidersService;
   beforeEach(() => {
-    component = new ListComponent();
+    TestBed.configureTestingModule({});
+    service = TestBed.get(ProvidersService);
+    component = new ListComponent(service);
+    let store = {};
+    const mockLocalStorage = {
+      getItem: (key: string): string => {
+        return key in store ? store[key] : null;
+      },
+      setItem: (key: string, value: string) => {
+        store[key] = `${value}`;
+      },
+      removeItem: (key: string) => {
+        delete store[key];
+      },
+      clear: () => {
+        store = {};
+      },
+    };
+    spyOn(localStorage, "getItem").and.callFake(mockLocalStorage.getItem);
+    spyOn(localStorage, "setItem").and.callFake(mockLocalStorage.setItem);
+    spyOn(localStorage, "removeItem").and.callFake(mockLocalStorage.removeItem);
+    spyOn(localStorage, "clear").and.callFake(mockLocalStorage.clear);
   });
-
-  it('should create', () => {
+  describe("onToggle", () => {
+    describe("provider is selected", () => {
+      it("should unselect the provider", () => {
+        let selectedProvider = service.getUnselectedProviders()[0];
+        service.selectProvider(selectedProvider);
+        spyOn(component, "onToggled").and.callThrough();
+        spyOn(service, "unselectProvider");
+        const eventTest = { provider: selectedProvider, isSelected: true };
+        component.onToggled(eventTest);
+        expect(component.onToggled).toHaveBeenCalled();
+        expect(service.unselectProvider).toHaveBeenCalled();
+      });
+    });
+    describe("provider is unselected", () => {
+      it("should select the provider", () => {
+        let unselectedProvider = service.getUnselectedProviders()[0];
+        spyOn(component, "onToggled").and.callThrough();
+        spyOn(service, "selectProvider");
+        const eventTest = { provider: unselectedProvider, isSelected: false };
+        component.onToggled(eventTest);
+        expect(component.onToggled).toHaveBeenCalled();
+        expect(service.selectProvider).toHaveBeenCalled();
+      });
+    });
+  });
+  it("should create", () => {
     expect(component).toBeTruthy();
-  });
-
-  describe('unselected providers', () => {
-    it('should have an initial length of 3', () => {
-      expect(component.unselectedProviders.length).toEqual(3);
-    });
-
-    it('should have an id', () => {
-      expect(component.unselectedProviders[0].id).toEqual('1');
-    });
-
-    it('should have a name', () => {
-      expect(component.unselectedProviders[0].name).toEqual('John');
-    });
-
-    it('should have an address', () => {
-      expect(component.unselectedProviders[0].address).toEqual('123 Greenway Blvd');
-    });
-
-    it('should have a phone', () => {
-      expect(component.unselectedProviders[0].phone).toEqual('8991234321');
-    });
-  });
-
-  describe('selected providers', () => {
-    it('should have no initial length', () => {
-      expect(component.selectedProviders.length).toEqual(0);
-    });
   });
 });
