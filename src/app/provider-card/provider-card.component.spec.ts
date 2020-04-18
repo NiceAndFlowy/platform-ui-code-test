@@ -10,9 +10,8 @@ describe('ProviderCardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProviderCardComponent ]
-    })
-    .compileComponents();
+      declarations: [ProviderCardComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -27,15 +26,18 @@ describe('ProviderCardComponent', () => {
 
   it('emits the toggled event', () => {
     const provider: Provider = {
-      id: "1",
-      name: "John",
-      address: "123 Greenway Blvd",
-      phone: "8991234321",
+      id: '1',
+      name: 'John',
+      address: '123 Greenway Blvd',
+      phone: '8991234321',
     };
     component.provider = provider;
     component.isSelected = true;
     spyOn(component.toggled, 'emit');
     component.toggleSelection();
-    expect(component.toggled.emit).toHaveBeenCalledWith({provider: component.provider, isSelected: component.isSelected});
-  })
+    expect(component.toggled.emit).toHaveBeenCalledWith({
+      provider: component.provider,
+      isSelected: component.isSelected,
+    });
+  });
 });

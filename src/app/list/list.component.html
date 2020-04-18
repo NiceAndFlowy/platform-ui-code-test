@@ -4,7 +4,7 @@
     <h3>Selected Providers</h3>
     <div class="flex-container">
       <li *ngFor="let p of providerService.getSelectedProviders()">
-        <provider-card [provider]="p" [isSelected]="true" (toggled)="onToggled($event)"></provider-card>
+        <provider-card [provider]="p" [isSelected]="true" (toggled)="toggleSelectionOfProvider($event)"></provider-card>
       </li>
     </div>
   </ul>
@@ -12,7 +12,7 @@
     <h3>Unselected Providers</h3>
     <div class="flex-container">
       <li *ngFor="let p of providerService.getUnselectedProviders()">
-        <provider-card [provider]="p" [isSelected]="false" (toggled)="onToggled($event)">
+        <provider-card [provider]="p" [isSelected]="false" (toggled)="toggleSelectionOfProvider($event)">
         </provider-card>
       </li>
     </div>

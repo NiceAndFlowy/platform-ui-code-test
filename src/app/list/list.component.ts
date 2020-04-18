@@ -1,14 +1,15 @@
-import { Provider } from "./../models/provider";
-import { Component, OnInit } from "@angular/core";
-import { ProvidersService } from "../services/providers.service";
+import { Provider } from './../models/provider';
+import { Component, OnInit } from '@angular/core';
+import { ProvidersService } from '../services/providers.service';
 
 @Component({
-  selector: "app-list",
-  templateUrl: "./list.component.html",
-  styleUrls: ["./list.component.css"],
+  selector: 'app-list',
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.css'],
 })
 export class ListComponent implements OnInit {
-  onToggled(provider) {
+  // (un)select the provider
+  toggleSelectionOfProvider(provider) {
     if (provider.isSelected) {
       this.providerService.unselectProvider(provider.provider);
     } else {
