@@ -103,7 +103,7 @@ describe('ProvidersService', () => {
         });
       });
     });
-    describe('No providers selected', () => {
+    describe('All providers selected', () => {
       beforeEach(() => {
         service.selectProvider(service.getUnselectedProviders()[0]);
         service.selectProvider(service.getUnselectedProviders()[0]);

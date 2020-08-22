@@ -7,6 +7,7 @@ import { Injectable } from '@angular/core';
 export class ProvidersService {
   private unselectedProviders: Provider[];
   private selectedProviders: Provider[];
+  
   private STORAGE_SELECTED = 'selectedProviders';
   private STORAGE_UNSELECTED = 'unselectedProviders';
 
