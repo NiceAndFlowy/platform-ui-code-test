@@ -1,0 +1,39 @@
+.container {
+  position: relative;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  width: calc(250px - 1em);
+  min-height: 200px;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  border-radius: 4px;
+  margin: 0.5em 0.5em 0.5em 0.5em;
+}
+
+.container.hovered:hover {
+  box-shadow: 0 8px 16px 0 rgba(49, 67, 87, 0.3);
+  cursor: pointer;
+}
+
+button {
+  background-color: #eee;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  cursor: hand;
+  font-family: Arial;
+}
+
+button.delete {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  background-color: gray;
+  color: white;
+}
+
+h3 {
+  color: grey;
+  margin: 0;
+}
